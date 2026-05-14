@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christabel Jepletting | 21 🎉</title>
+
+<style>
+body {
+    margin:0;
+    font-family: Arial, sans-serif;
+    text-align:center;
+    overflow-x:hidden;
+    background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
+    color:white;
+}
+
+.screen {
+    display:none;
+    padding:40px 20px;
+    min-height:100vh;
+}
+
+.active {
+    display:block;
+}
+
+button {
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    font-size:16px;
+    cursor:pointer;
+    margin-top:20px;
+    background:white;
+    color:#ff4d6d;
+}
+
+.hero-img {
+    width:200px;
+    height:200px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-top:20px;
+    border:5px solid white;
+    box-shadow:0 0 20px rgba(255,255,255,0.7);
+}
+
+/* Typing animation */
+#message {
+    max-width:600px;
+    margin:auto;
+    line-height:1.6;
+    text-align:left;
+    border-right: 2px solid white;
+    white-space: pre-wrap;
+    overflow: hidden;
+}
+
+.firework {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hiddenBtn {
+    display:none;
+    margin-top:20px;
+    padding:10px 20px;
+    border-radius:20px;
+    border:none;
+    background:white;
+    color:#ff4d6d;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎵 MUSIC -->
+<audio id="bgMusic" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- SCREEN 1 -->
+<div id="screen1" class="screen active">
+    <h1>🎉 SHE IS OFFICIALLY 21 TODAY 🎉</h1>
+    <h2>Christabel Jepletting 💖</h2>
+    <img src="herphoto.jpg" class="hero-img">
+    <p>Click below to begin your surprise ✨</p>
+    <button onclick="startExperience()">Start Celebration ➡</button>
+</div>
+
+<!-- SCREEN 2 -->
+<div id="screen2" class="screen">
+    <h2>💌 A Message From Dennis</h2>
+    <div id="message"></div>
+    <button class="nextBtn" onclick="showSecret()">Click if You Want a Secret 🎁</button>
+    <button class="nextBtn" onclick="celebrate()">Celebrate 🎇</button>
+    <button id="secretBtn" class="hiddenBtn" onclick="alert('Christabel, you are amazing! Keep being you! 💖')">🎉 Secret Surprise!</button>
+</div>
+
+<script>
+// Screens
+function startExperience(){
+    document.getElementById("bgMusic").play();
+    nextScreen(2);
+}
+
+function nextScreen(num) {
+    document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+    document.getElementById("screen"+num).classList.add("active");
+}
+
+// Typing animation for message
+const messageText = `Christabel, today you officially step into 21 — 
+a powerful, beautiful, and exciting new chapter of life.
+I’m genuinely grateful for your friendship.
+You carry strength, kindness, and intelligence in such a natural way.
+May this year open doors you never imagined,
+bring peace in your decisions,
+confidence in your dreams,
+and joy in every moment.
+Keep shining. Keep growing.
+21 looks incredible on you. ✨🥂
+– Dennis 💫`;
+
+let i = 0;
+function typeMessage(){
+    if(i < messageText.length){
+        document.getElementById("message").innerHTML += messageText.charAt(i);
+        i++;
+        setTimeout(typeMessage,40);
+    }
+}
+window.onload = () => {
+    if(document.getElementById("screen2").classList.contains("active")){
+        typeMessage();
+    }
+}
+
+// Hidden secret message
+function showSecret(){
+    document.getElementById("secretBtn").style.display = "inline-block";
+}
+
+// Fireworks effect
+function celebrate(){
+    for(let i=0;i<150;i++){
+        let fw = document.createElement("div");
+        fw.className="firework";
+        fw.style.left = Math.random()*100+"vw";
+        fw.style.top = Math.random()*50+"vh";
+        fw.style.background = `hsl(${Math.random()*360},70%,70%)`;
+        document.body.appendChild(fw);
+
+        let angle = Math.random()*360;
+        let distance = 100 + Math.random()*100;
+        fw.animate([
+            {transform:`translate(0,0)`, opacity:1},
+            {transform:`translate(${distance*Math.cos(angle*Math.PI/180)}px,${distance*Math.sin(angle*Math.PI/180)}px)`, opacity:0}
+        ],{
+            duration: 1500 + Math.random()*1500,
+            easing: 'ease-out'
+        });
+        setTimeout(()=>{fw.remove()},3000);
+    }
+    createBalloons();
+}
+
+// Balloons
+function createBalloons(){
+    for(let i=0;i<21;i++){
+        let b=document.createElement("div");
+        b.className="balloon";
+        b.style.left=Math.random()*100+"vw";
+        b.style.background=`hsl(${Math.random()*360},70%,70%)`;
+        document.body.appendChild(b);
+    }
+}
+</script>
+
+</body>
+</html>
