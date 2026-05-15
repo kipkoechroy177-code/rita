@@ -1,259 +1,343 @@
+```html id="x4k9qp"
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rita Barno | 18 🎉</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<style>
-body {
-    margin:0;
-    font-family: Arial, sans-serif;
-    text-align:center;
-    overflow-x:hidden;
-    background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
-    color:white;
-}
+  <title>Rita Barno | Happy 18th Birthday 🎉</title>
 
-.screen {
-    display:none;
-    padding:40px 20px;
-    min-height:100vh;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-.active {
-    display:block;
-}
+    body {
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+      background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
+      color: white;
+      text-align: center;
+    }
 
-button {
-    padding:12px 25px;
-    border:none;
-    border-radius:30px;
-    font-size:16px;
-    cursor:pointer;
-    margin-top:20px;
-    background:white;
-    color:#ff4d6d;
-}
+    .screen {
+      display: none;
+      min-height: 100vh;
+      padding: 40px 20px;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
 
-.hero-img {
-    width:200px;
-    height:200px;
-    border-radius:50%;
-    object-fit:cover;
-    margin-top:20px;
-    border:5px solid white;
-    box-shadow:0 0 20px rgba(255,255,255,0.7);
-}
+    .active {
+      display: flex;
+    }
 
-/* Typing animation */
-#message {
-    max-width:600px;
-    margin:auto;
-    line-height:1.6;
-    text-align:left;
-    border-right: 2px solid white;
-    white-space: pre-wrap;
-    overflow: hidden;
-}
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
 
-.firework {
-    position: fixed;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    pointer-events: none;
-}
+    h2 {
+      margin-bottom: 15px;
+    }
 
-.hiddenBtn {
-    display:none;
-    margin-top:20px;
-    padding:10px 20px;
-    border-radius:20px;
-    border:none;
-    background:white;
-    color:#ff4d6d;
-    cursor:pointer;
-}
-</style>
+    p {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+    .hero-img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      margin: 20px 0;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+    }
+
+    button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px;
+      background: white;
+      color: #ff4d6d;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    #message {
+      max-width: 700px;
+      text-align: left;
+      line-height: 1.8;
+      font-size: 18px;
+      white-space: pre-wrap;
+      border-right: 2px solid white;
+      padding-right: 5px;
+      margin-top: 20px;
+    }
+
+    .firework {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .balloon {
+      position: fixed;
+      bottom: -100px;
+      width: 50px;
+      height: 70px;
+      border-radius: 50%;
+      animation: floatUp 8s linear forwards;
+    }
+
+    .balloon::after {
+      content: "";
+      position: absolute;
+      width: 2px;
+      height: 40px;
+      background: white;
+      left: 50%;
+      top: 70px;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0);
+      }
+
+      to {
+        transform: translateY(-120vh);
+      }
+    }
+
+    #secretBtn {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .hero-img {
+        width: 180px;
+        height: 180px;
+      }
+
+      #message {
+        font-size: 16px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- 🎵 MUSIC -->
-<audio id="bgMusic" loop>
-  <source src="song.mp3" type="audio/mpeg">
-</audio>
+  <!-- Background Music -->
+  <audio id="bgMusic" loop>
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
 
-<!-- SCREEN 1 -->
-<div id="screen1" class="screen active">
+  <!-- SCREEN 1 -->
+  <div id="screen1" class="screen active">
+
     <h1>🎉 SHE IS OFFICIALLY 18 TODAY 🎉</h1>
+
     <h2>Rita Barno 💖</h2>
-    <img src="herphoto.jpg" class="hero-img">
+
+    <img src="herphoto.jpg" alt="Rita Photo" class="hero-img">
+
     <p>Click below to begin your surprise ✨</p>
+
     <button onclick="startExperience()">Start Celebration ➡</button>
-</div>
 
-<!-- SCREEN 2 -->
-<div id="screen2" class="screen">
+  </div>
+
+  <!-- SCREEN 2 -->
+  <div id="screen2" class="screen">
+
     <h2>💌 A Message From Roy</h2>
+
     <div id="message"></div>
-    <button class="nextBtn" onclick="showSecret()">Click if You Want a Secret 🎁</button>
-    <button class="nextBtn" onclick="celebrate()">Celebrate 🎇</button>
-    <button id="secretBtn" class="hiddenBtn" onclick="alert('Rita,My love… where do I even begin?
-How do I explain the way my heart feels whenever I think about you? 😭❤️
-You came into my life so softly, yet somehow you became my entire world 🌍💖
 
-Turning 18 is such a beautiful moment, but honestly… the most beautiful thing is YOU 🥹👑
-Your heart.
-Your smile.
-Your soul.
-Your existence.
+    <div>
+      <button onclick="showSecret()">🎁 Secret Message</button>
 
-Baby, I need you to understand something today and never forget it:
+      <button onclick="celebrate()">🎇 Celebrate</button>
+    </div>
+
+    <button id="secretBtn" onclick="showLoveMessage()">
+      ❤️ Click Me Baby
+    </button>
+
+  </div>
+
+  <script>
+
+    // Switch Screens
+    function nextScreen(screenNumber) {
+
+      document.querySelectorAll(".screen").forEach(screen => {
+        screen.classList.remove("active");
+      });
+
+      document.getElementById("screen" + screenNumber).classList.add("active");
+    }
+
+    // Start Experience
+    function startExperience() {
+
+      const music = document.getElementById("bgMusic");
+
+      music.play();
+
+      nextScreen(2);
+
+      typeMessage();
+    }
+
+    // Romantic Message
+    const messageText = `Happy 18th Birthday to the girl who changed my life forever ❤️🥺🎂✨
+
+My love, you came into my life so softly, yet somehow you became my entire world 🌍💖
+
 You are deeply loved ❤️
-Not for what you have.
-Not for how you look alone.
-But for who you truly are 🫶🏽✨
+Not because of what you have,
+but because of who you are 🫶🏽✨
 
-I love the way you care for people 💕
-I love the way your eyes light up when you’re happy 😭
-I love the way your voice calms my heart 🥺
-I love the way you make me feel safe even when my world feels heavy ❤️
+Your smile heals me 😊
+Your voice comforts me 🫂
+And your heart is the most beautiful thing I’ve ever known 💕
 
-Sometimes I sit quietly and think about you… and I genuinely thank God for bringing you into my life 🙏🏽💖
-Because before you, love was just a word.
-But you made me feel it for real 😭❤️
+Thank you for existing 😭💖
+Thank you for loving me.
+Thank you for being my peace.
 
-You are the type of girl people pray to meet once in a lifetime 💎✨
-Soft-hearted.
-Beautiful.
-Loving.
-Rare.
-Irreplaceable.
+No matter what happens in life,
+I will always choose you ❤️
 
-And honestly, baby girl… I’m scared of a life without you because you became a part of me 🥺❤️
-You became my peace when my mind is tired 🫂
-My happiness when life feels hard 🌸
-My comfort when everything hurts 😭💕
+Happy Birthday, my princess 👸🏽✨
+18 looks beautiful on you 🥹💖
 
-If one day you ever feel insecure, unloved, or not enough… come back and read this again ❤️
-Because there is someone here who sees you as the most beautiful soul alive 🥹✨
-Someone who thinks your smile is worth more than gold 💖
-Someone who would choose you over and over again no matter what 🌹
-
-I hope life is gentle with you 🌸
-I hope your heart never experiences pain that changes your softness 💔
-I hope you always find reasons to smile 😊
-And I hope every tear you cry is replaced with happiness one day 🫶🏽❤️
-
-You deserve flowers on random days 💐
-Long hugs after hard moments 🫂
-Forehead kisses 😘
-Late-night reassurance 🌙❤️
-And a love so pure that you never have to question it again 🥺💍
-
-Baby… thank you for existing 😭💕
-Thank you for your love.
-Thank you for your patience.
-Thank you for every moment you gave me.
-Thank you for being the reason my heart smiles every day ❤️✨
-
-As you turn 18 today 👑🎂
-I just want to promise you this:
-I will always appreciate you.
-I will always care for you.
-I will always remind you how beautiful you are.
-And no matter what happens in life… a part of my heart will always belong to you ❤️🔐
-
-Happy Birthday, my princess 👸🏽💖
-You are my answered prayer.
-My favorite person.
-My once-in-a-lifetime love 🥺❤️✨
-
-I love you more than words will ever be able to explain 😭💕on  💖')">🎉 Secret Surprise!</buttHappy 18th Birthday to the girl who changed my life forever ❤️🥺🎂✨
-
->
-</div>
-
-<script>
-// Screens
-function startExperience(){
-    document.getElementById("bgMusic").play();
-    nextScreen(2);
-}
-
-function nextScreen(num) {
-    document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
-    document.getElementById("screen"+num).classList.add("active");
-}
-
-// Typing animation for message
-const messageText = `Rita, today you officially step into 18 — 
-a powerful, beautiful, and exciting new chapter of life.
-I’m genuinely grateful for your love.
-You carry strength, kindness, and intelligence in such a natural way.
-May this year open doors you never imagined,
-bring peace in your decisions,
-confidence in your dreams,
-and joy in every moment.
-Keep shining. Keep growing.
-18 looks incredible on you. ✨🥂
 – Roy 💫`;
 
-let i = 0;
-function typeMessage(){
-    if(i < messageText.length){
-        document.getElementById("message").innerHTML += messageText.charAt(i);
-        i++;
-        setTimeout(typeMessage,40);
-    }
-}
-window.onload = () => {
-    if(document.getElementById("screen2").classList.contains("active")){
-        typeMessage();
-    }
-}
+    // Typing Animation
+    let index = 0;
 
-// Hidden secret message
-function showSecret(){
-    document.getElementById("secretBtn").style.display = "inline-block";
-}
+    function typeMessage() {
 
-// Fireworks effect
-function celebrate(){
-    for(let i=0;i<150;i++){
+      if (index < messageText.length) {
+
+        document.getElementById("message").innerHTML += messageText.charAt(index);
+
+        index++;
+
+        setTimeout(typeMessage, 40);
+      }
+    }
+
+    // Show Secret Button
+    function showSecret() {
+
+      document.getElementById("secretBtn").style.display = "inline-block";
+    }
+
+    // Secret Popup Message
+    function showLoveMessage() {
+
+      alert(
+        "Rita ❤️\n\nYou are my peace, my happiness, and the best thing that ever happened to me 🥺💖"
+      );
+    }
+
+    // Fireworks
+    function celebrate() {
+
+      for (let i = 0; i < 180; i++) {
+
         let fw = document.createElement("div");
-        fw.className="firework";
-        fw.style.left = Math.random()*100+"vw";
-        fw.style.top = Math.random()*50+"vh";
-        fw.style.background = `hsl(${Math.random()*360},70%,70%)`;
+
+        fw.className = "firework";
+
+        fw.style.left = Math.random() * 100 + "vw";
+
+        fw.style.top = Math.random() * 100 + "vh";
+
+        fw.style.background =
+          `hsl(${Math.random() * 360}, 70%, 70%)`;
+
         document.body.appendChild(fw);
 
-        let angle = Math.random()*360;
-        let distance = 100 + Math.random()*100;
-        fw.animate([
-            {transform:`translate(0,0)`, opacity:1},
-            {transform:`translate(${distance*Math.cos(angle*Math.PI/180)}px,${distance*Math.sin(angle*Math.PI/180)}px)`, opacity:0}
-        ],{
-            duration: 1500 + Math.random()*1500,
-            easing: 'ease-out'
-        });
-        setTimeout(()=>{fw.remove()},3000);
-    }
-    createBalloons();
-}
+        let angle = Math.random() * 360;
 
-// Balloons
-function createBalloons(){
-    for(let i=0;i<21;i++){
-        let b=document.createElement("div");
-        b.className="balloon";
-        b.style.left=Math.random()*100+"vw";
-        b.style.background=`hsl(${Math.random()*360},70%,70%)`;
-        document.body.appendChild(b);
+        let distance = 100 + Math.random() * 150;
+
+        fw.animate([
+          {
+            transform: `translate(0,0)`,
+            opacity: 1
+          },
+          {
+            transform: `translate(
+              ${distance * Math.cos(angle * Math.PI / 180)}px,
+              ${distance * Math.sin(angle * Math.PI / 180)}px
+            )`,
+            opacity: 0
+          }
+        ],
+          {
+            duration: 2000,
+            easing: "ease-out"
+          });
+
+        setTimeout(() => {
+          fw.remove();
+        }, 2000);
+      }
+
+      createBalloons();
     }
-}
-</script>
+
+    // Balloons
+    function createBalloons() {
+
+      for (let i = 0; i < 25; i++) {
+
+        let balloon = document.createElement("div");
+
+        balloon.className = "balloon";
+
+        balloon.style.left = Math.random() * 100 + "vw";
+
+        balloon.style.background =
+          `hsl(${Math.random() * 360}, 70%, 70%)`;
+
+        document.body.appendChild(balloon);
+
+        setTimeout(() => {
+          balloon.remove();
+        }, 8000);
+      }
+    }
+
+  </script>
 
 </body>
+
 </html>
+```
